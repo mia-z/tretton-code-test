@@ -3,17 +3,26 @@
 	import { onMount } from "svelte";
     import type { PageServerData } from "./$types";
     import { UsersStore } from "$lib/users";
+    import { cities } from "../constants";
 
     export let data: PageServerData;
 
     let usersToShow: User[] = [];
 
-    let orderFilter: "Location" | "Name" = "Name"
+    let orderBy: "Location" | "Name" = "Name"
+
+    let filteredCities: TrettonCity[] = ["Helsingborg", "Borlänge", "Ljubljana", "Lund", "Stockholm"]
+
+    let queryFilter: string = "";
 
     $: {
-        orderFilter === "Location" ?
+        orderBy === "Location" ?
             usersToShow = $UsersStore.sort((a, b) => a.office?.localeCompare(b.office)) :
             usersToShow = $UsersStore.sort((a, b) => a.name?.localeCompare(b.name));
+    }
+
+    $: {
+        usersToShow = $UsersStore.filter(x => filteredCities.includes(x.office))
     }
 
     onMount(() => {
@@ -43,11 +52,26 @@
                     Location
                 </div>
                 <div class={"col-span-1 form-control"}>
-                    <input type="radio" bind:group={orderFilter} value={"Name"} name={"sort-radio"} class={"radio mx-auto checked:radio-primary input-xs"} />
+                    <input type="radio" bind:group={orderBy} value={"Name"} name={"sort-radio"} class={"radio mx-auto checked:radio-primary input-xs"} />
                 </div>
                 <div class={"col-span-1 form-control"}>
-                    <input type="radio" bind:group={orderFilter} value={"Location"} name={"sort-radio"} class={"radio mx-auto checked:radio-primary input-xs"} />
+                    <input type="radio" bind:group={orderBy} value={"Location"} name={"sort-radio"} class={"radio mx-auto checked:radio-primary input-xs"} />
                 </div>
+            </div>
+        </div>
+        <div class={"flex flex-col bg-base-100 p-2 rounded-lg"}>
+            <div class={"bold mx-auto"}>
+                Filter Offices
+            </div>
+            <div class={"grid grid-cols-3 auto-rows-min auto-cols-min grid-flow-row gap-y-2"}>
+                {#each cities as city}
+                    <div class={"flex flex-col form-control"}>
+                        <label class={"text-center mb-1"} for={"checkbox-" + city}>
+                            {city}
+                        </label>
+                        <input type="checkbox" bind:group={filteredCities} value={city} id={"checkbox-" + city} />
+                    </div>
+                {/each}
             </div>
         </div>
     </div>
