@@ -2,13 +2,13 @@
 
 const cities = ["Helsingborg", "Lund", "Ljubljana" ,"Stockholm", "Borlänge"] as const;
 
-declare type TrettonCountry = typeof cities[number];
+declare type TrettonCity = typeof cities[number];
 
 declare type User = {
     name: string,
     email: string,
     phoneNumber: string,
-    office: string,
+    office: TrettonCity,
     manager: string,
     orgUnit: string,
     mainText: string,
