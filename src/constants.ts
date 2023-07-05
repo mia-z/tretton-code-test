@@ -1,0 +1,1 @@
+export const cities = ["Helsingborg", "Lund", "Ljubljana" ,"Stockholm", "Borlänge"] as const;
