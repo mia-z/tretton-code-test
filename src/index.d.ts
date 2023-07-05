@@ -1,5 +1,9 @@
 /** Ambient typing for types declared elsewhere, but expected in this app */
 
+const cities = ["Helsingborg", "Lund", "Ljubljana" ,"Stockholm", "Borlänge"] as const;
+
+declare type TrettonCountry = typeof cities[number];
+
 declare type User = {
     name: string,
     email: string,
