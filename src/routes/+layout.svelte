@@ -1,6 +1,10 @@
 <script lang="ts">
     import "$styles/tw.css";
     import "$styles/base.scss";
+	import Header from "$components/Header.svelte";
 </script>
 
-<slot />
+<div class={"flex flex-col"}>
+    <Header />
+    <slot />
+</div>
