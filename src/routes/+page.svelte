@@ -15,16 +15,18 @@
 
     let queryFilter: string = "";
 
-    $: orderBy === "Location" ?
+    $: {
+        orderBy === "Location" ?
         usersToShow = $UsersStore.sort((a, b) => a.office?.localeCompare(b.office)) :
         usersToShow = $UsersStore.sort((a, b) => a.name?.localeCompare(b.name));
 
-    $: usersToShow = $UsersStore.filter(x => filteredCities.includes(x.office));
-    
-    $: if (queryFilter.length > 2) {
-        usersToShow = $UsersStore.filter(x => x.name.toLowerCase().includes(queryFilter.toLowerCase()));
-    } else {
-        usersToShow = $UsersStore;
+        usersToShow = usersToShow.filter(x => filteredCities.includes(x.office));
+
+        if (queryFilter.length > 2) {
+            usersToShow = usersToShow.filter(x => x.name.toLowerCase().includes(queryFilter.toLowerCase()));
+        } else {
+            usersToShow = usersToShow;
+        }
     }
 
     onMount(() => {
