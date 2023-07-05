@@ -1,2 +1,13 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import UserCard from "$components/UserCard.svelte";
+    import type { PageServerData } from "./$types";
+
+    export let data: PageServerData;    
+</script>
+
+<div class={"container mx-auto gap-5 grid grid-cols-5 grid-flow-row"}>
+    {#each data.users as user}
+        <UserCard class={""} userInfo={user} />
+    {/each}
+</div>
+
