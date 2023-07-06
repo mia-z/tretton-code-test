@@ -4,6 +4,9 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
 	plugins: [sveltekit()],
 	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}']
+		includeSource: ["src/**/*.{js,ts,svelte}"],
+		globals: true,
+		environment: "jsdom",
+		setupFiles: ["src/setupTest.js"]
 	}
 });

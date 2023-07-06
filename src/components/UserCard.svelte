@@ -23,25 +23,25 @@
                 {userInfo.office ?? userInfo.orgUnit}
             </div>
         </div>
-        <div class={"ml-auto shrink flex flex-row lg:flex-col lg:justify-around my-auto space-x-2 lg:space-x-0 lg:space-y-2 mr-2"}>
-            {#if userInfo.github}
-                <a target={"_blank"} referrerpolicy={"no-referrer"} href={"https://github.com" + userInfo.github} class={"group"}>
-                    <Fa class={"text-xl transition-all group-hover:text-[whitesmoke] group-active:text-primary-content"} icon={faGithub} />
+        <div class={"ml-auto w-1/4 grid grid-cols-2 grid-rows-2 grid-flow-row gap-2 my-auto mr-2"}>
+            {#if userInfo.gitHub}
+                <a target={"_blank"} referrerpolicy={"no-referrer"} href={"https://github.com" + userInfo.gitHub} class={"group"}>
+                    <Fa class={"lg:text-xl text-base transition-all group-hover:text-[whitesmoke] group-active:text-primary-content"} icon={faGithub} />
                 </a>
             {/if}
             {#if userInfo.twitter}
                 <a target={"_blank"} referrerpolicy={"no-referrer"} href={"https://twitter.com/" + userInfo.twitter} class={"group"}>
-                    <Fa class={"text-2xl transition-all group-hover:text-blue-400 group-active:text-primary-content"} icon={faTwitter} />
+                    <Fa class={"lg:text-xl text-base transition-all group-hover:text-blue-400 group-active:text-primary-content"} icon={faTwitter} />
                 </a>
             {/if}
-            {#if userInfo.stackoverflow}
-                <a target={"_blank"} referrerpolicy={"no-referrer"} href={"https://stackoverflow.com" + userInfo.stackoverflow} class={"group"}>
-                    <Fa class={"text-2xl transition-all group-hover:text-orange-400 group-active:text-primary-content"} icon={faStackOverflow} />
+            {#if userInfo.stackOverflow}
+                <a target={"_blank"} referrerpolicy={"no-referrer"} href={"https://stackoverflow.com" + userInfo.stackOverflow} class={"group"}>
+                    <Fa class={"lg:text-xl text-base transition-all group-hover:text-orange-400 group-active:text-primary-content"} icon={faStackOverflow} />
                 </a>
             {/if}
             {#if userInfo.linkedIn}
                 <a target={"_blank"} referrerpolicy={"no-referrer"} href={"https://linkedin.com" + userInfo.linkedIn} class={"group"}>
-                    <Fa class={"text-2xl transition-all group-hover:text-blue-700 group-active:text-primary-content"} icon={faLinkedin} />
+                    <Fa class={"lg:text-xl text-base transition-all group-hover:text-blue-700 group-active:text-primary-content"} icon={faLinkedin} />
                 </a>
             {/if}
         </div>
