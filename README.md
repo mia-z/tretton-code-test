@@ -51,3 +51,5 @@ Vitest has more used in a couple of function test cases to check whether the nam
 ---
 
 Running locally can be done by running `yarn && yarn dev` in the root of the project.
+
+A live version of the app can also be found [Here](https://1337.miaz.dev)
